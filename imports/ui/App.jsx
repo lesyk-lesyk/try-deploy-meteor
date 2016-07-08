@@ -22,12 +22,7 @@ class App extends Component {
     event.preventDefault();
 
     const text = this.refs.textInput.value.trim();
-    Tasks.insert({
-      text,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username,
-    });
+    Meteor.call('tasks.insert', text);
 
     this.refs.textInput.value = '';
   }
